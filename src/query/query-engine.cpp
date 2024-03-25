@@ -1,21 +1,22 @@
-#include "./parser.cpp"
+#include "parser.hpp"
 #include <iostream>
 #include <string>
-#include "../utility/util-headers.h"
-#include "../network/network-engine.cpp"
+#include "../utility/util-headers.hpp"
+#include "../network/network-engine.hpp"
+#include "query-engine.hpp"
 
-namespace Query {
-void init();
-}
-
-void init() {
-  while (1) {
+void Query::init()
+{
+  while (1)
+  {
     std::string input;
 
-    if (Network::queryWaiting()) {
+    if (Network::queryWaiting())
+    {
       input = Network::getQuery();
     }
-    else std::getline(std::cin, input);
+    else
+      std::getline(std::cin, input);
 
     bool validQuery = handleQuery(input);
     if (!validQuery)

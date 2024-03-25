@@ -1,12 +1,14 @@
 #include <string>
-namespace Network
+#include "network-engine.hpp"
+
+bool Network::queryWaiting()
 {
-    bool queryWaiting()
-    {
-        return false;
-    };
-    std::string getQuery()
-    {
-        return "Not Implemented.";
-    }
+    return false;
+};
+
+std::string Network::getQuery()
+{
+    return "Not Implemented.";
 }
+
+void Network::init() {}

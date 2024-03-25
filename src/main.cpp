@@ -1,6 +1,13 @@
 #include <iostream>
-#include "utility/node_id.cpp"
+#include "./utility/util-headers.hpp"
+#include "network/network-engine.hpp"
+#include "storage/storage-engine.hpp"
+#include "query/query-engine.hpp"
+#include "execute/execute-engine.hpp"
+
 std::string SEMANTIC_VERSION = "0.1.1";
+
+const nodeConfig NODE_CONFIG{4, false};
 
 int main() {
   std::cout << "Vectorial Database -v " << SEMANTIC_VERSION << '\n';
@@ -12,8 +19,3 @@ int main() {
   Execute::init(NODE_CONFIG);
   
 }
-
-const struct nodeConfig {
-  int nodeThreads;
-  bool nodeGPU;
-} NODE_CONFIG{4, false};

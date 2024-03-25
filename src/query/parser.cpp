@@ -1,14 +1,6 @@
 // TODO: Re-implement later using enums
-#include "../utility/get_tokens.cpp"
-#include <string>
-#include "../utility/util-headers.h"
-#include "../utility/to_embedding.cpp"
-
-typedef std::vector<std::string> tokens_t;
-void executeOperation(const tokens_t&);
-bool tableOperation(const tokens_t&);
-bool indexOperation(const tokens_t&);
-bool recordOperation(const tokens_t&);
+#include "parser.hpp"
+#include "../utility/util-headers.hpp"
 
 bool error = false;
 
