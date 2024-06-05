@@ -1,0 +1,5 @@
+notes.md
+.vscode
+bin
+temp
+*.code-workspace
