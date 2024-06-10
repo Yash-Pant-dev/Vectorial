@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 import Executor.ExecQueue;
 import Protocol.Command;
+import Util.Log;
 
 public class QueryEngine implements Runnable {
 
@@ -13,7 +14,7 @@ public class QueryEngine implements Runnable {
         try {
             handleQueries();
         } catch (Exception e) {
-            System.out.printf("[E] QueryHandler -%s", e.getMessage());
+            Log.i("[E][Th][QH]: %s", e.getMessage());
         }
     }
 
@@ -26,8 +27,8 @@ public class QueryEngine implements Runnable {
             try {
                 Command command = Parser.parseCommand(str);
                 ExecQueue.add(command);
-            } catch (InvalidCommandException e) {
-                System.out.println("[E] Invalid Command -" + e.getMessage());
+            } catch (CommandException e) {
+                Log.i("[E][QH] Command Exception: %s", e.getMessage());
             }
         }
     }

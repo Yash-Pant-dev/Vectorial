@@ -1,4 +1,4 @@
-package Executor;
+package Executor.Operations;
 
 public class Match implements Comparable<Match> {
     public final Float score;

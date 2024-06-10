@@ -1,4 +1,4 @@
-package Executor;
+package Executor.Operations;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -10,16 +10,16 @@ import java.util.Map.Entry;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
-import Protocol.Operation;
+import Protocol.Operations;
 import QueryEngine.Parser;
 
 public class Similarity {
 
-    public static void bestMatches(Operation op, String rec, Integer limit) throws FileNotFoundException, IOException {
+    public static void bestMatches(Operations op, String rec, Integer limit) throws FileNotFoundException, IOException {
         Protocol.Record baseRecord = Parser.parseRecord(rec);
         SortedSet<Match> bestMatches = new TreeSet<>();
 
-        BufferedReader br = new BufferedReader(new FileReader(Table.path(Table.table)));
+        BufferedReader br = new BufferedReader(new FileReader(Table.path(Table.currentTable)));
         String fileDetails = br.readLine();
         System.out.println(fileDetails);
 
@@ -68,10 +68,11 @@ public class Similarity {
     }
 
     public static Boolean filter(HashMap<String, String> metadata, HashMap<String, String> baseMetadata) {
+        
         for (Entry<String, String> set : baseMetadata.entrySet()) {
             if (set.getValue() == null && !metadata.containsKey(set.getKey()))
                 return false;
-            if (set.getValue() != null && metadata.get(set.getKey()) != set.getValue())
+            if (set.getValue() != null && !set.getValue().equals(metadata.get(set.getKey())))
                 return false;
         }
 

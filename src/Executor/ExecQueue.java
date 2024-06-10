@@ -7,8 +7,8 @@ import Protocol.Command;
 
 public class ExecQueue {
     public static Command currentCommand;
-    public static String currentTable = "temp.vec";
-    
+    public static String currentTable;
+
     public static Queue<Command> queue = new LinkedBlockingQueue<>();
     
     public static void add(Command cmd) {

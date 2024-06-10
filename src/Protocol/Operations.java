@@ -1,6 +1,6 @@
 package Protocol;
 
-public enum Operation {
+public enum Operations {
     // Table operations - Add and select table
     TA,
     TS,

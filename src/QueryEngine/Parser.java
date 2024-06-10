@@ -4,40 +4,40 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import Protocol.Command;
-import Protocol.Operation;
+import Protocol.Operations;
 import Protocol.Record;
 
 public class Parser {
 
-    public static Command parseCommand(String cmd) throws InvalidCommandException {
+    public static Command parseCommand(String cmd) throws CommandException {
         String[] tokens = cmd.split(" ");
 
         if (tokens.length == 0) {
-            throw new InvalidCommandException("No command passed");
+            throw new CommandException("0 Command tokens.");
         }
 
-        switch (tokens[0]) {
-            case "TA":
+        switch (Operations.valueOf(tokens[0])) {
+            case Operations.TA:
                 if (tokens.length != 3)
-                    throw new InvalidCommandException("Op TA requires 3 tokens");
-                return new Command(Operation.TA, tokens[1], Integer.parseInt(tokens[2]));
+                    throw new CommandException("Incorrect fields length for OP. Given: " + tokens);
+                return new Command(Operations.TA, tokens[1], Integer.parseInt(tokens[2]));
 
-            case "TS":
+            case Operations.TS:
                 if (tokens.length != 2)
-                    throw new InvalidCommandException("Op TS requires 2 tokens");
-                return new Command(Operation.TS, tokens[1]);
+                    throw new CommandException("Incorrect fields length for OP. Given: " + tokens);
+                return new Command(Operations.TS, tokens[1]);
 
-            case "RA":
+            case Operations.RA:
                 if (tokens.length != 2)
-                    throw new InvalidCommandException("Op RA requires 2 tokens");
-                return new Command(Operation.RA, tokens[1]);
+                    throw new CommandException("Incorrect fields length for OP. Given: " + tokens);
+                return new Command(Operations.RA, tokens[1]);
 
-            case "DOT":
+            case Operations.DOT:
                 if (tokens.length != 3)
-                    throw new InvalidCommandException("Op DOT requires 3 tokens");
-                return new Command(Operation.DOT, tokens[1], Integer.parseInt(tokens[2])); 
+                    throw new CommandException("Incorrect fields length for OP. Given: " + tokens);
+                return new Command(Operations.DOT, tokens[1], Integer.parseInt(tokens[2])); 
             default:
-                throw new InvalidCommandException("Unknown op:" + tokens[0]);
+                throw new CommandException("Operation not implemented yet: " + tokens);
         }
     }
 
