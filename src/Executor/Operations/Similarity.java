@@ -12,6 +12,7 @@ import java.util.TreeSet;
 
 import Protocol.Operations;
 import QueryEngine.Parser;
+import Util.Log;
 
 public class Similarity {
 
@@ -20,8 +21,7 @@ public class Similarity {
         SortedSet<Match> bestMatches = new TreeSet<>();
 
         BufferedReader br = new BufferedReader(new FileReader(Table.path(Table.currentTable)));
-        String fileDetails = br.readLine();
-        System.out.println(fileDetails);
+        Log.i(br.readLine()); // Read away the first file metadata line. 
 
         while (true) {
             String recStr = br.readLine();
@@ -55,8 +55,10 @@ public class Similarity {
             }
         }
 
-        bestMatches.forEach(match -> System.out.println(
+        bestMatches.forEach(match -> Log.i(
                 match.score.toString() + match.record.embedding.toString() + match.record.metadata.toString()));
+
+        Log.f();
     }
 
     public static Float dot(ArrayList<Float> emb, ArrayList<Float> baseEmb) {

@@ -42,7 +42,7 @@ public class Table {
         File file = new File(path(name));
 
         if (!file.createNewFile()) {
-            Log.e("[E] Table already exists: %s\n", name);
+            Log.e("Table already exists: %s\n", name);
             return;
         }
 

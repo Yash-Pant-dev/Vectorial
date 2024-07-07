@@ -14,7 +14,7 @@ public class QueryEngine implements Runnable {
         try {
             handleQueries();
         } catch (Exception e) {
-            Log.i("[E][Th][QH]: %s", e.getMessage());
+            Log.e("[Th][QH]: %s", e.getMessage());
         }
     }
 
@@ -28,7 +28,7 @@ public class QueryEngine implements Runnable {
                 Command command = Parser.parseCommand(str);
                 ExecQueue.add(command);
             } catch (CommandException e) {
-                Log.i("[E][QH] Command Exception: %s", e.getMessage());
+                Log.e("[QH] Command Exception:" + e.getMessage());
             }
         }
     }
